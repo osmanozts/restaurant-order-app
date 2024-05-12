@@ -15,7 +15,8 @@ export function SignInForm({}: SignInFormProps) {
         password,
       });
       const apiResponse = response.data as { accessToken: string };
-      console.log("🚀 ~ apiResponse:", apiResponse);
+      window.localStorage.setItem("accessToken", apiResponse.accessToken);
+      window.dispatchEvent(new Event("storage"));
     } catch (error) {
       console.error("Anmeldung fehlgeschlagen:", error);
     }

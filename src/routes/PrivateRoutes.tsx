@@ -1,10 +1,14 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { HomePage } from "../pages";
 
-export const PrivateRoutes = () => {
+type PrivateRoutesProps = {
+  onLogOut: () => void;
+};
+
+export const PrivateRoutes = ({ onLogOut }: PrivateRoutesProps) => {
   return (
     <Routes>
-      <Route path="/" element={<HomePage />} />
+      <Route path="/" element={<HomePage onLogOut={onLogOut} />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
